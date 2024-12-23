@@ -36,6 +36,8 @@ export const title = tv({
         "green",
         "pink",
         "foreground",
+        "white",
+        "black",
       ],
       class: "bg-clip-text text-transparent bg-gradient-to-b",
     },
