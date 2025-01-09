@@ -2,6 +2,7 @@
 import {Tabs, Tab, Card, CardBody} from "@nextui-org/react";
 import CourseItems from "./course";
 import CourseGrade from "./grade";
+import CourseParticipants from "./participant";
 
 export default function CourseContents() {
   let tabs = [
@@ -21,7 +22,7 @@ export default function CourseContents() {
       id: "participants",
       label: "Participants",
       content:
-        "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      (<CourseParticipants/>),
     },
   ];
 
