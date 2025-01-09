@@ -1,13 +1,15 @@
 import { title } from "@/components/primitives";
-import UsersTable from "./table";
+import CoursesTable from "./table";
 
-export default function UsersPage() {
+export default function CoursesPage() {
   return (
-    <div className="w-full">
+    <div>
+       <div className="w-full">
       {/* <h1 className={title()}></h1> */}
       <div className="mt-5">
-        <UsersTable />
+        <CoursesTable />
       </div>
+    </div>
     </div>
   );
 }
