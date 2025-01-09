@@ -64,9 +64,7 @@ export const EyeFilledIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) =>
 
 export default function LoginInput() {
   const [isVisible, setIsVisible] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
-  const toggleLoading = () => setIsLoading(!isLoading);
 
   return (
     <NextUIProvider>
@@ -107,14 +105,8 @@ export default function LoginInput() {
           size="lg"
           variant="shadow"
           radius="sm"
-          onPress={toggleLoading}
           className="font-semibold text-2xl w-full">
           LOGIN
-          {isLoading ? (
-
-          ):(
-            
-          )}
         </Button>
       </div>
     </NextUIProvider>
