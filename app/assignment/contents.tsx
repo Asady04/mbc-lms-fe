@@ -1,5 +1,7 @@
+'use client'
 import { subtitle } from "@/components/primitives";
 import { Divider } from "@nextui-org/react";
+import JoditEditorReact from "@/components/editor";
 
 export default function AssignmentContent() {
   return (
@@ -25,6 +27,14 @@ export default function AssignmentContent() {
         </ol>
       </div>
       <Divider className="my-2" />
+      <div>
+        <p>
+          *gambar*
+        </p>
+      </div>
+      <div>
+        <JoditEditorReact />
+      </div>
     </div>
   );
 }
