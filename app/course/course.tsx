@@ -1,3 +1,4 @@
+'use client'
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import { faFileArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -55,10 +56,10 @@ export default function CourseItems() {
             <div className="bg-default-100 rounded-md p-5 mt-2">
               <div>
                 <p className="text-default-600">
-                  <b>Opened:</b>Tuesday, 17 September 2024, 12:00 AM
+                  <b>Opened:</b> Tuesday, 17 September 2024, 12:00 AM
                 </p>
                 <p className="text-default-600">
-                  <b>Due:</b>Tuesday, 17 September 2024, 13:00 AM
+                  <b>Due:</b> Tuesday, 17 September 2024, 13:00 AM
                 </p>
               </div>
               <Divider className="my-2" />
@@ -89,10 +90,10 @@ export default function CourseItems() {
             <div className="bg-default-100 rounded-md p-5 mt-2">
               <div>
                 <p className="text-default-600">
-                  <b>Opened:</b>Tuesday, 17 September 2024, 12:00 AM
+                  <b>Opened:</b> Tuesday, 17 September 2024, 12:00 AM
                 </p>
                 <p className="text-default-600">
-                  <b>Due:</b>Tuesday, 17 September 2024, 13:00 AM
+                  <b>Due:</b> Tuesday, 17 September 2024, 13:00 AM
                 </p>
               </div>
               <Divider className="my-2" />

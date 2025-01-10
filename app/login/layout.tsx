@@ -1,6 +1,3 @@
-'use client'
-import CoverImage from '@/assets/BannerLaboratorium.png';
-
 export default function LoginLayout({
   children,
 }: {

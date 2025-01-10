@@ -2,6 +2,7 @@ import React from "react";
 import { Input, NextUIProvider } from "@nextui-org/react";
 import { Button } from "@nextui-org/react";
 
+// Eye Icons
 export const EyeSlashFilledIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
@@ -62,6 +63,7 @@ export const EyeFilledIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) =>
   );
 };
 
+// Input and Button
 export default function LoginInput() {
   const [isVisible, setIsVisible] = React.useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
@@ -97,7 +99,6 @@ export default function LoginInput() {
           type={isVisible ? "text" : "password"}
           radius="sm"
         />
-
       </div>
       <div className="pt-12">
         <Button
