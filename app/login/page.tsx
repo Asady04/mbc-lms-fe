@@ -16,6 +16,8 @@ export default function LoginPage() {
       >
         <img src={CoverImage.src} className="w-full h-full object-cover" />
       </div>
+
+      {/* Login Section */}
       <Card
         className="border-none rounded-sm w-full h-full lg:max-w-md lg:rounded-none"
       >

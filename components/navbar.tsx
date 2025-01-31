@@ -14,6 +14,7 @@ import { Input } from "@nextui-org/input";
 import { link as linkStyles } from "@nextui-org/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
+import logoImage from '@/assets/MBC logo.png';
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
@@ -69,6 +70,7 @@ export const Navbar = () => {
                 href={item.href}
               >
                 {item.label}
+                {item.label === "About" && <img src={logoImage.src} className="h-6 object-cover pt-1 ml-1"/>}
               </NextLink>
             </NavbarItem>
           ))}
