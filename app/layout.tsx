@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
-import { Link } from "@nextui-org/link";
+import { Link } from "@heroui/link";
 import clsx from "clsx";
 
 import { Providers } from "./providers";
@@ -43,8 +43,11 @@ export default function RootLayout({
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col h-screen">
-            <NavbarCondition/>
-            <main>
+            <div className="fixed z-50 w-full">
+              <NavbarCondition/>
+            </div>
+            
+            <main className="mt-20">
               {children}
             </main>
             <footer>

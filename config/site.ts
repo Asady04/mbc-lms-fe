@@ -9,16 +9,12 @@ export const siteConfig = {
       href: "/",
     },
     {
-      label: "Users",
-      href: "/users",
+      label: "Dashboard",
+      href: "/dashboard",
     },
     {
-      label: "Courses",
-      href: "/courses",
-    },
-    {
-      label: "Blog",
-      href: "/blog",
+      label: "Events",
+      href: "/events",
     },
     {
       label: "About",
@@ -27,32 +23,24 @@ export const siteConfig = {
   ],
   navMenuItems: [
     {
-      label: "Profile",
-      href: "/profile",
+      label: "Home",
+      href: "/",
     },
     {
       label: "Dashboard",
       href: "/dashboard",
     },
     {
-      label: "Projects",
-      href: "/projects",
+      label: "Events",
+      href: "/events",
     },
     {
-      label: "Team",
-      href: "/team",
+      label: "About",
+      href: "/about",
     },
     {
-      label: "Calendar",
-      href: "/calendar",
-    },
-    {
-      label: "Settings",
-      href: "/settings",
-    },
-    {
-      label: "Help & Feedback",
-      href: "/help-feedback",
+      label: "Profile",
+      href: "/profile",
     },
     {
       label: "Logout",

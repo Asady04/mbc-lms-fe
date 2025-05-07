@@ -1,0 +1,1 @@
+export const apiUrl = 'http://mbc-lms-api.test/'

@@ -1,16 +1,16 @@
 "use client"
-import {Tabs, Tab, Card, CardBody} from "@nextui-org/react";
+import {Tabs, Tab, Card, CardBody} from "@heroui/react";
 import CourseItems from "./course";
 import CourseGrade from "./grade";
 import CourseParticipants from "./participant";
 
-export default function CourseContents() {
+export default function CourseContents(props:any) {
   let tabs = [
     {
       id: "course",
       label: "Course",
       content:
-        (<CourseItems/>),
+        (<CourseItems description={props.description} id={props.id}/>),
     },
     {
       id: "grades",

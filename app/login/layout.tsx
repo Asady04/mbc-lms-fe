@@ -7,7 +7,7 @@ export default function LoginLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section>
+    <section className='-m-20'>
       <div>
         {children}
       </div>

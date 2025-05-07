@@ -12,62 +12,38 @@ import {
   AutocompleteItem,
   Input,
   Kbd,
-} from "@nextui-org/react";
+  Tooltip,
+} from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUpRightFromSquare, faEdit, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowUpRightFromSquare,
+  faEdit,
+  faPlus,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 import { SearchIcon } from "@/components/icons";
-import React, { Key } from "react";
+import React, { Key, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { apiUrl } from "@/config/api";
+import AddCourse from "./addCourse";
+import UpdateCourse from "./updateCourse";
+import DeleteCourse from "./deleteCourse";
+import ViewCourse from "./viewCourse";
 
-const rows = [
-  {
-    key: "row1",
-    title: "Sample Title 1",
-    description: "This is a description for item 1.",
-    image: "https://via.placeholder.com/150",
-    action: "Edit",
-  },
-  {
-    key: "row2",
-    title: "Sample Title 2",
-    description: "This is a description for item 2.",
-    image: "https://via.placeholder.com/150",
-    action: "Delete",
-  },
-  {
-    key: "row3",
-    title: "Sample Title 3",
-    description: "This is a description for item 3.",
-    image: "https://via.placeholder.com/150",
-    action: "View",
-  },
-  {
-    key: "row4",
-    title: "Sample Title 4",
-    description: "This is a description for item 4.",
-    image: "https://via.placeholder.com/150",
-    action: "Edit",
-  },
-  {
-    key: "row5",
-    title: "Introduction to AI and Big Data",
-    description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem architecto officiis nulla consequatur suscipit debitis temporibus dolorem molestiae quam saepe nihil beatae nobis facilis consequuntur, sint iste voluptate qui ut?",
-    image: "https://via.placeholder.com/150",
-    action: "Delete",
-  },
-];
+interface Course {
+  id: number;
+  title: string;
+  description: string;
+}
+
 const columns = [
   {
     key: "title",
-    label: "TITLE",
+    label: "Title",
   },
   {
     key: "description",
-    label: "DESCRIPTION",
-  },
-  {
-    key: "image",
-    label: "IMAGE",
+    label: "Description",
   },
   {
     key: "action",
@@ -76,6 +52,22 @@ const columns = [
 ];
 
 export default function CoursesTable() {
+  const [courses, setCourses] = useState<Course[]>([]);
+
+  const getAllCourses = async () => {
+    await fetch(`${apiUrl + "api/courses"}`) // Change to your Laravel API URL
+      .then((res) => res.json())
+      .then((data: Course[]) => {
+        console.log("Fetched courses:", data); // ✅ Log API response
+        setCourses(data);
+      })
+      .catch((error) => console.error("Error fetching courses:", error));
+  };
+
+  useEffect(() => {
+    getAllCourses();
+  }, []);
+
   return (
     <div className="w-full">
       <div className="w-full flex justify-between mb-3 items-center">
@@ -94,14 +86,7 @@ export default function CoursesTable() {
           }
           type="search"
         />
-        <Button
-          isIconOnly
-          color="primary"
-          className="dark:text-default-50"
-          size="lg"
-        >
-          <FontAwesomeIcon icon={faPlus} />
-        </Button>
+        <AddCourse getAllCourses={getAllCourses} />
       </div>
 
       {/* table */}
@@ -111,42 +96,31 @@ export default function CoursesTable() {
             <TableColumn key={column.key}>{column.label}</TableColumn>
           )}
         </TableHeader>
-        <TableBody items={rows}>
+        <TableBody items={courses}>
           {(item) => (
-            <TableRow key={item.key}>
+            <TableRow key={item.id}>
               {/* {(columnKey) => (
                 <TableCell>{getKeyValue(item, columnKey)}</TableCell>
               )} */}
               <TableCell>{item.title}</TableCell>
               <TableCell>
-                {item.description.length > 40
-                  ? `${item.description.slice(0, 40)}...`
-                  : item.description}
+                {item.description.length > 40 ? (
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: item.description.slice(0, 40) + "...",
+                    }}
+                  ></div>
+                ) : (
+                  <div
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                  ></div>
+                )}
               </TableCell>
-              <TableCell>{item.image}</TableCell>
               <TableCell>
                 <div className="flex space-x-1">
-                  <Button
-                    isIconOnly
-                    color="primary"
-                    className="text-white dark:text-default-50"
-                  >
-                    <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-                  </Button>
-                  <Button
-                    isIconOnly
-                    color="success"
-                    className="text-white dark:text-default-50"
-                  >
-                    <FontAwesomeIcon icon={faEdit} />
-                  </Button>
-                  <Button
-                    isIconOnly
-                    color="danger"
-                    className="dark:text-default-50"
-                  >
-                    <FontAwesomeIcon icon={faTrash} />
-                  </Button>
+                  <ViewCourse id={item.id} />
+                  <UpdateCourse getAllCourses={getAllCourses} id={item.id} />
+                  <DeleteCourse getAllCourses={getAllCourses} id={item.id} />
                 </div>
               </TableCell>
             </TableRow>

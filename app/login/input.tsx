@@ -1,6 +1,6 @@
 import React from "react";
-import { Input, NextUIProvider } from "@nextui-org/react";
-import { Button } from "@nextui-org/react";
+import { Input, HeroUIProvider } from "@heroui/react";
+import { Button } from "@heroui/react";
 
 export const EyeSlashFilledIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
@@ -67,7 +67,7 @@ export default function LoginInput() {
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   return (
-    <NextUIProvider>
+    <HeroUIProvider>
       <div className="flex w-full flex-col gap-4" >
         <Input
           placeholder="NIM"
@@ -109,6 +109,6 @@ export default function LoginInput() {
           LOGIN
         </Button>
       </div>
-    </NextUIProvider>
+    </HeroUIProvider>
   );
 }

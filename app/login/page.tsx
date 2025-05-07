@@ -1,7 +1,7 @@
 'use client'
 import { subtitle, title } from "@/components/primitives";
 import CoverImage from '@/assets/BannerLaboratorium.png';
-import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, Image } from "@heroui/react";
 import LoginInput from "./input";
 
 export default function LoginPage() {
@@ -21,8 +21,8 @@ export default function LoginPage() {
       >
         <CardHeader className="h-1/2 flex flex-row justify-center">
           <div className="inline-block max-w-xl text-center justify-center">
-            <h1 className={title()} >Title</h1>
-            <h1 className={subtitle()} >subtitle</h1>
+            <h1 className={title()} >Login</h1>
+            <h1 className={subtitle()} >Log into your account</h1>
           </div>
         </CardHeader>
         <CardBody className="h-1/2 flex flex-row justify-center">

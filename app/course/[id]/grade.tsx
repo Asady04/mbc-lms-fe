@@ -7,8 +7,7 @@ import {
   TableRow,
   TableCell,
   Button,
-  Avatar,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowUpRightFromSquare,
@@ -22,37 +21,45 @@ import { useRouter } from "next/navigation";
 const rows = [
   {
     key: "row1",
-    name: "Jamaludin",
-    group: "97",
+    task: "Tugas 1",
+    range: "0-100",
+    grade: "97",
     action: "Edit",
   },
   {
     key: "row2",
-    name: "Albaghdadi",
-    group: "97",
+    task: "Tugas 2",
+    range: "0-100",
+    grade: "97",
     action: "Delete",
   },
   {
     key: "row3",
-    name: "Rusidi",
-    group: "97",
+    task: "Tugas 3",
+    range: "0-100",
+    grade: "97",
     action: "View",
   },
   {
     key: "row4",
-    name: "Ambatugam",
-    group: "97",
+    task: "Tugas 4",
+    range: "0-100",
+    grade: "97",
     action: "Edit",
   },
 ];
 const columns = [
   {
-    key: "name",
-    label: "NAME",
+    key: "task",
+    label: "TASK",
   },
   {
-    key: "groups",
-    label: "GROUPS",
+    key: "range",
+    label: "Range",
+  },
+  {
+    key: "grade",
+    label: "GRADE",
   },
   {
     key: "action",
@@ -60,7 +67,7 @@ const columns = [
   },
 ];
 
-export default function CourseParticipants() {
+export default function CourseGrade() {
   return (
     <div className="">
       <Table aria-label="Example table with dynamic content">
@@ -75,13 +82,9 @@ export default function CourseParticipants() {
               {/* {(columnKey) => (
                 <TableCell>{getKeyValue(item, columnKey)}</TableCell>
               )} */}
-              <TableCell>
-                <div className="flex items-center space-x-6">
-                  <Avatar name={item.name} />
-                  <p>{item.name} </p>
-                </div>
-              </TableCell>
-              <TableCell>{item.group}</TableCell>
+              <TableCell>{item.task}</TableCell>
+              <TableCell>{item.range}</TableCell>
+              <TableCell>{item.grade}</TableCell>
               <TableCell>
                 <div className="flex space-x-1">
                   <Button
