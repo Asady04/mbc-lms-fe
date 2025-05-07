@@ -1,8 +1,7 @@
-import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCircleCheck, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faFileArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Accordion, AccordionItem, Button, Divider } from "@heroui/react";
-import AddChapter from "./addChapter";
+import { Accordion, AccordionItem, Button, Divider, Link } from "@heroui/react";
 import { useEffect, useState } from "react";
 import { apiUrl } from "@/config/api";
 import UpdateChapter from "./updateChapter";
@@ -25,10 +24,10 @@ export default function CourseItems(props: any) {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-  
+
       const result = await response.json();
       console.log("Fetched chapters:", result.data); // ✅ Log API response correctly
-  
+
       setchapters(result.data); // ✅ Set only the actual chapters data
     } catch (error) {
       console.error("Error fetching chapters:", error);
@@ -43,7 +42,19 @@ export default function CourseItems(props: any) {
       <div className="space-y-2">
         {/* Admin Feature */}
         <div className="justify-start flex pl-2">
-          <AddChapter id={props.id} getAllChapters={getAllChapters} />
+          <Link
+            className="text-white"
+            size="sm"
+            href={`/course/${props.id}/add-chapter`}
+          >
+            <Button
+              color="primary"
+              className="dark:text-default-50"
+              endContent={<FontAwesomeIcon icon={faPlus} />}
+            >
+              Add Chapter
+            </Button>
+          </Link>
         </div>
 
         <Accordion variant="splitted" selectionMode="multiple">
@@ -70,7 +81,10 @@ export default function CourseItems(props: any) {
               <div>
                 {/* Admin Feature */}
                 <div className="flex justify-start space-x-2 pl-2">
-                  <AddTask chapter_id={materi.id} getAllChapters={getAllChapters} />
+                  <AddTask
+                    chapter_id={materi.id}
+                    getAllChapters={getAllChapters}
+                  />
                   <UpdateChapter
                     id={materi.id}
                     getAllChapters={getAllChapters}
@@ -87,7 +101,7 @@ export default function CourseItems(props: any) {
                   dangerouslySetInnerHTML={{ __html: materi.content }}
                 ></div>
                 {/* Tasks Section */}
-                <TaskItems chapter_id={materi.id}/>
+                <TaskItems chapter_id={materi.id} />
               </div>
             </AccordionItem>
           ))}

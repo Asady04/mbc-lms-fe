@@ -50,13 +50,13 @@ export default function Questions(props: any) {
       </div>
 
       {questions.map((question, key) => (
-        <div className="rounded-md border text-left p-3 mt-3" key={key}>
+        <div className={`${key%2 == 0? 'bg-slate-200' : ''} text-left p-3 mt-3`} key={key}>
           <div className="flex justify-between items-center">
             <div className="flex space-x-2 items-center">
-              <h2 className="text-medium">{question.question}</h2>
+              <h2 className="text-lg text-default-600">{`${key+1}. ${question.question}`}</h2>
             </div>
           </div>
-          <div className="mt-2">
+          <div className="mt-2 text-medium text-default-600">
             <p>Option 1: {question.option1}</p>
             <p>Option 2: {question.option2}</p>
             <p>Option 3: {question.option3}</p>
